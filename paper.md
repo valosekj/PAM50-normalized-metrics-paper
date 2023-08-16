@@ -1,10 +1,10 @@
 ---
 title: 'A database of the healthy human spinal cord morphometry in the PAM50 template space'
 tags:
-  - Preprint
-  - Jupyter Book
-  - Reproducible article
-  - Neuroscience
+  - spinal cord
+  - morphometric measures 
+  - normative values
+  - open-source
 authors:
   - name: Agah Karakuzu
     orcid: 0000-0001-7283-271X

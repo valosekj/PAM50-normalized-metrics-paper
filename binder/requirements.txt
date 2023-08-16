@@ -1,0 +1,4 @@
+plotly==5.14.1
+plotly-express==0.4.1
+repo2data>=2.6.0
+jupyter-book==0.14.0

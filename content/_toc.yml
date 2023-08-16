@@ -1,0 +1,9 @@
+format: jb-book
+root: 00-simple_markdown
+parts:
+  - caption: Ipynb
+    chapters:
+    - file: 01-simple_notebook
+  - caption: MyST
+    chapters:
+    - file: 02-simple-myst

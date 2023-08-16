@@ -6,18 +6,37 @@ tags:
   - normative values
   - open-source
 authors:
-  - name: Agah Karakuzu
-    orcid: 0000-0001-7283-271X
-    affiliation: "1, 2"
-  - name: Nikola Stikov
-    orcid: 0000-0002-8480-5230
-    affiliation: "1, 2"
+  - name: Jan Valošek
+    orcid: 0000-0002-7398-4990
+    affiliation: "1, 2, 3, 4"
+  - name: Sandrine Bédard
+    orcid: 0000-0001-9859-1133
+    affiliation: "1"
+  - name: Miloš Keřkovský
+    orcid: 0000-0003-0587-9897
+    affiliation: "5"
+  - name: Tomáš Rohan
+    orcid: 0000-0002-7105-583X
+    affiliation: "5"
+  - name: Julien Cohen-Adad
+    orcid: 0000-0003-3662-9532
+    affiliation: "1, 2, 6, 7"
 affiliations:
- - name: NeuroPoly Lab, Institute of Biomedical Engineering, Polytechnique Montreal, Montreal, Canada
-   index: 1
- - name: Montreal Heart Institute, University of Montréal, Montréal, Canada
-   index: 2
-date: 26 March 2021
+  - name: NeuroPoly Lab, Institute of Biomedical Engineering, Polytechnique Montreal, Montreal, QC, Canada
+    index: 1
+  - name: Mila - Quebec AI Institute, Montreal, QC, Canada
+    index: 2
+  - name: Department of Neurosurgery, Faculty of Medicine and Dentistry, Palacký University Olomouc, Olomouc, Czechia
+    index: 3
+  - name: Department of Neurology, Faculty of Medicine and Dentistry, Palacký University Olomouc, Olomouc, Czechia
+    index: 4
+  - name: Department of Radiology and Nuclear Medicine, University Hospital Brno and Masaryk University, Brno, Czechia
+    index: 5
+  - name: Functional Neuroimaging Unit, CRIUGM, Université de Montréal, Montreal, QC, Canada
+    index: 6
+  - name: Centre de recherche du CHU Sainte-Justine, Université de Montréal, Montreal, QC, Canada
+    index: 7
+date: 16 August 2023
 bibliography: paper.bib
 ---
 

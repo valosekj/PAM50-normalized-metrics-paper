@@ -1,5 +1,5 @@
 ---
-title: 'NeuroLibre preprint (PDF) template'
+title: 'A database of the healthy human spinal cord morphometry in the PAM50 template space'
 tags:
   - Preprint
   - Jupyter Book

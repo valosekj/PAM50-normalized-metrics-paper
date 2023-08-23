@@ -1,3 +1,6 @@
-{ "src": "from nilearn import datasets; datasets.fetch_development_fmri(data_dir=_dst, n_subjects=1);",
-  "dataLayout": "neurolibre",
-  "projectName": "agah_template"}
+{
+  # TODO: update the link after merge and release
+  "src": "https://github.com/spinalcordtoolbox/PAM50-normalized-metrics/download/vX.X.X/PAM50-normalized-metrics-neurolibre.zip",
+  "dst": "../../data",
+  "projectName": "PAM50-normalized-metrics-neurolibre"
+}

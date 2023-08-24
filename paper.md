@@ -69,8 +69,17 @@ slices in the PAM50 template and the subject native space for each vertebral lev
 
 # Acknowledgements
 
-Thanks to Nick Guenther and Mathieu Guay-Paquet for their assistance with dataset management. We would like to thank Joshua Newton for his contributions in helping us implement the algorithm to SCT. We express our gratitude to Allan R. Martin for his insightful discussions on the clinical aspects of the work. We would also like to thank Nathan Molinier for providing valuable feedback on the manuscript figures. We acknowledge all participants as well as collaborators of the _spine-generic_ study.
+Thanks to Nick Guenther and Mathieu Guay-Paquet for their assistance with dataset management. We would like to thank Joshua 
+Newton for his contributions in helping us implement the algorithm to SCT. We express our gratitude to Allan R. Martin for 
+his insightful discussions on the clinical aspects of the work. We would also like to thank Nathan Molinier for providing 
+valuable feedback on the manuscript figures. We acknowledge all participants as well as collaborators of the _spine-generic_ study.
 
-Funded by the Canada Research Chair in Quantitative Magnetic Resonance Imaging [CRC-2020-00179], the Canadian Institute of Health Research [PJT-190258], the Canada Foundation for Innovation [32454, 34824], the Fonds de Recherche du Québec - Santé [322736], the Natural Sciences and Engineering Research Council of Canada [RGPIN-2019-07244], the Canada First Research Excellence Fund (IVADO and TransMedTech), the Courtois NeuroMod project, the Quebec BioImaging Network [5886, 35450], INSPIRED (Spinal Research, UK; Wings for Life, Austria; Craig H. Neilsen Foundation, USA), Mila - Tech Transfer Funding Program. Supported by the Ministry of Health of the Czech Republic, grant nr. NU22-04-00024. All rights reserved. JV has received funding from the European Union's Horizon Europe research and innovation programme under the Marie Sktodowska-Curie grant agreement No 101107932.
+Funded by the Canada Research Chair in Quantitative Magnetic Resonance Imaging [CRC-2020-00179], the Canadian Institute of 
+Health Research [PJT-190258], the Canada Foundation for Innovation [32454, 34824], the Fonds de Recherche du Québec - Santé 
+[322736], the Natural Sciences and Engineering Research Council of Canada [RGPIN-2019-07244], the Canada First Research Excellence 
+Fund (IVADO and TransMedTech), the Courtois NeuroMod project, the Quebec BioImaging Network [5886, 35450], INSPIRED (Spinal 
+Research, UK; Wings for Life, Austria; Craig H. Neilsen Foundation, USA), Mila - Tech Transfer Funding Program. Supported by 
+the Ministry of Health of the Czech Republic, grant nr. NU22-04-00024. All rights reserved. JV has received funding from the 
+European Union's Horizon Europe research and innovation programme under the Marie Sktodowska-Curie grant agreement No 101107932.
 
 # References

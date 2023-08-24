@@ -18,12 +18,10 @@ and MRI vendors. The proposed method is open-source and easily accessible throug
 This new morphometric database allows researchers to normalize morphometrics based on sex and age, thereby minimizing inter-subject 
 variability associated with demographic and biological factors.
 
-<figure>
-  <img src="normalization_diagram.png" alt=""/>
-  <figcaption>Figure 1. Schematic representation of the normalization approach. (A) T2-weighted images of 203 participants 
+![image](normalization_diagram.png)
+_**Figure 1.** Schematic representation of the normalization approach. **(A)** T2-weighted images of 203 participants 
 from the Spine Generic Public Database (multi-subject) were used. The spinal cord was segmented, and vertebral levels were 
-identified automatically using the Spinal Cord Toolbox (SCT). (B) Six morphometric measures were computed for each axial 
-slice from the single-subject segmentation masks. (C) For each level, the number of slices in the subject native space and 
-the corresponding level in the PAM50 template (D) were identified. Then, the morphometric measures were linearly interpolated 
-to the PAM50 space using the number of slices in the PAM50 template and the subject native space for each vertebral level.</figcaption>
-</figure>
+identified automatically using the Spinal Cord Toolbox (SCT). **(B)** Six morphometric measures were computed for each axial 
+slice from the single-subject segmentation masks. **(C)** For each level, the number of slices in the subject native space and 
+the corresponding level in the PAM50 template **(D)** were identified. Then, the morphometric measures were linearly interpolated 
+to the PAM50 space using the number of slices in the PAM50 template and the subject native space for each vertebral level._

@@ -42,7 +42,21 @@ bibliography: paper.bib
 
 # Summary
 
-TODO
+Spinal cord morphometry measures derived from magnetic resonance imaging (MRI) scans serve as valuable prognostic biomarkers 
+for various spinal cord pathologies. Despite their significance, interpreting these biomarkers is challenging due to substantial 
+variability between subjects. The lack of a standardized normalization method to mitigate this variability and the need for a 
+better understanding of morphometric distribution contribute to the current knowledge gap.
+
+In this work, we present a database of healthy normative values for six commonly used measures of spinal cord morphometry built 
+using a new fully-automatic normalization approach. Morphometric measures were computed from a large open-access dataset of 
+healthy adult volunteers (N = 203) and brought to the common space of the PAM50 spinal cord template using a newly proposed 
+normalization method based on linear interpolation \autoref{fig:figure1}.
+
+The database is interactive, available online (TODO: add a link to interactive preprint) and allows filtering for sex, age, 
+and MRI vendors. The proposed method is open-source and easily accessible through the Spinal Cord Toolbox (SCT) v6.0 and higher. 
+
+This new morphometric database allows researchers to normalize morphometrics based on sex and age, thereby minimizing inter-subject 
+variability associated with demographic and biological factors.
 
 # Figures
 

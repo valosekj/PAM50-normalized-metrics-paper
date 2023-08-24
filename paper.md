@@ -60,17 +60,12 @@ variability associated with demographic and biological factors.
 
 # Figures
 
-TODO - add summary figure
-
-Figures can be included like this:
-
-![Caption for example figure.\label{fig:example}](images/example_figure.png)
-
-You can reference figure from text using \autoref{fig:example}.
-
-Figure sizes can be customized by adding an optional second parameter:
-
-![Caption for example figure.](images/example_figure.png){ width=20% }
+![Schematic representation of the normalization approach. (A) T2-weighted images of 203 participants from the Spine Generic 
+Public Database (multi-subject) were used. The spinal cord was segmented, and vertebral levels were identified automatically 
+using the Spinal Cord Toolbox (SCT). (B) Six morphometric measures were computed for each axial slice from the single-subject 
+segmentation masks. (C) For each level, the number of slices in the subject native space and the corresponding level in the PAM50 
+template (D) were identified. Then, the morphometric measures were linearly interpolated to the PAM50 space using the number of 
+slices in the PAM50 template and the subject native space for each vertebral level.\label{fig:figure1}](normalization_diagram.png){ width=80% }
 
 # Acknowledgements
 

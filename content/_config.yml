@@ -7,9 +7,6 @@
 # Book settings
 title                       : "A database of the healthy human spinal cord morphometry in the PAM50 template space"  # The title of the book. Will be placed in the left navbar.
 author                      : Jan Valošek, Sandrine Bédard, Miloš Keřkovský, Tomáš Rohan, Julien Cohen-Adad  # The author of the book
-copyright                   : "2021"  # Copyright year to be placed in the footer
-logo                        : "neurolibre-logo.png"  # A path to the book logo
-exclude_patterns            : []  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
 #######################################################################################
 # Execution settings

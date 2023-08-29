@@ -20,7 +20,7 @@ variability associated with demographic and biological factors.
 
 ![image](normalization_diagram.png)
 _**Figure 1.** Schematic representation of the normalization approach. **(A)** T2-weighted images of 203 participants 
-from the Spine Generic Public Database (multi-subject) were used. The spinal cord was segmented, and vertebral levels were 
+from the_ spine-generic _dataset (multi-subject) were used. The spinal cord was segmented, and vertebral levels were 
 identified automatically using the Spinal Cord Toolbox (SCT). **(B)** Six morphometric measures were computed for each axial 
 slice from the single-subject segmentation masks. **(C)** For each level, the number of slices in the subject native space and 
 the corresponding level in the PAM50 template **(D)** were identified. Then, the morphometric measures were linearly interpolated 

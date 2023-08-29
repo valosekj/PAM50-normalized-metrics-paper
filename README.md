@@ -18,7 +18,7 @@ and MRI vendors. The proposed method is open-source and easily accessible throug
 This new morphometric database allows researchers to normalize morphometrics based on sex and age, thereby minimizing inter-subject 
 variability associated with demographic and biological factors.
 
-![image](normalization_diagram.png)
+![image](content/images/fig1.png)
 _**Figure 1.** Schematic representation of the normalization approach. **(A)** T2-weighted images of 203 participants 
 from the_ spine-generic _dataset (multi-subject) were used. The spinal cord was segmented, and vertebral levels were 
 identified automatically using the Spinal Cord Toolbox (SCT). **(B)** Six morphometric measures were computed for each axial 

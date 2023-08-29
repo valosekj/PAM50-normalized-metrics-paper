@@ -65,7 +65,7 @@ dataset (multi-subject) were used. The spinal cord was segmented, and vertebral 
 using the Spinal Cord Toolbox (SCT). (B) Six morphometric measures were computed for each axial slice from the single-subject 
 segmentation masks. (C) For each level, the number of slices in the subject native space and the corresponding level in the PAM50 
 template (D) were identified. Then, the morphometric measures were linearly interpolated to the PAM50 space using the number of 
-slices in the PAM50 template and the subject native space for each vertebral level.\label{fig:figure1}](normalization_diagram.png){ width=80% }
+slices in the PAM50 template and the subject native space for each vertebral level.\label{fig:figure1}](content/images/fig1.png){ width=80% }
 
 # Acknowledgements
 

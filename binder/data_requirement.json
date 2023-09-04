@@ -1,6 +1,5 @@
 {
-  # TODO: update the link after merge and release
-  "src": "https://github.com/spinalcordtoolbox/PAM50-normalized-metrics/download/vX.X.X/PAM50-normalized-metrics-neurolibre.zip",
-  "dst": "../../data",
+  "src": "https://drive.google.com/uc?id=1OlqgZzPRQpMfiU1ELhd7MG7EMoCaG2TO",
+  "dst": "./data",
   "projectName": "PAM50-normalized-metrics-neurolibre"
 }

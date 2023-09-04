@@ -1,3 +1,2 @@
 #!/bin/bash
 git clone --depth 1 https://github.com/spinalcordtoolbox/PAM50-normalized-metrics.git content/analysis
-cp -r ../data/PAM50-normalized-metrics-neurolibre/PAM50-normalized-metrics-neurolibre content/analysis/source/data

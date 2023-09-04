@@ -8,9 +8,11 @@ tags:
 authors:
   - name: Jan Valošek
     orcid: 0000-0002-7398-4990
+    equal-contrib: true
     affiliation: "1, 2, 3, 4"
   - name: Sandrine Bédard
     orcid: 0000-0001-9859-1133
+    equal-contrib: true
     affiliation: "1"
   - name: Miloš Keřkovský
     orcid: 0000-0003-0587-9897

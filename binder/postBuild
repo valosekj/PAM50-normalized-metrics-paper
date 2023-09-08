@@ -1,2 +1,2 @@
 #!/bin/bash
-git clone --depth 1 https://github.com/spinalcordtoolbox/PAM50-normalized-metrics.git --branch r20230904 content/analysis
+git clone --depth 1 https://github.com/spinalcordtoolbox/PAM50-normalized-metrics.git content/analysis

@@ -47,3 +47,5 @@ html_theme_options:
     image_dark: "neurolibre-logo.png"
 
 #######################################################################################
+
+only_build_toc_files: true

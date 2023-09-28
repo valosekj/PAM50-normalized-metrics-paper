@@ -54,7 +54,7 @@ using a new fully-automatic normalization approach. Morphometric measures were c
 healthy adult volunteers (N = 203) and brought to the common space of the PAM50 spinal cord template using a newly proposed 
 normalization method based on linear interpolation \autoref{fig:figure1}.
 
-The database is interactive, available online (TODO: add a link to interactive preprint) and allows filtering for sex, age, 
+The database is interactive, available online ([https://preprint.neurolibre.org/10.55458/neurolibre.00016](https://preprint.neurolibre.org/10.55458/neurolibre.00016)) and allows filtering for sex, age, 
 and MRI vendors. The proposed method is open-source and easily accessible through the Spinal Cord Toolbox (SCT) v6.0 and higher. 
 
 This new morphometric database allows researchers to normalize morphometrics based on sex and age, thereby minimizing inter-subject 

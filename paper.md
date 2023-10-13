@@ -62,19 +62,19 @@ variability associated with demographic and biological factors.
 
 # Figures
 
-![Schematic representation of the normalization approach. (A) T2-weighted images of 203 participants from the spine-generic 
+![Schematic representation of the normalization approach. (A) T2-weighted images of 203 participants from the <i>spine-generic</i> 
 dataset (multi-subject) were used. The spinal cord was segmented, and vertebral levels were identified automatically 
 using the Spinal Cord Toolbox (SCT). (B) Six morphometric measures were computed for each axial slice from the single-subject 
-segmentation masks. (C) For each level, the number of slices in the subject native space and the corresponding level in the PAM50 
+segmentation masks. (C) For each vertebral level, the number of slices in the subject native space and the corresponding vertebral level in the PAM50 
 template (D) were identified. Then, the morphometric measures were linearly interpolated to the PAM50 space using the number of 
 slices in the PAM50 template and the subject native space for each vertebral level.\label{fig:figure1}](content/images/fig1.png){ width=80% }
 
 # Acknowledgements
 
-Thanks to Nick Guenther and Mathieu Guay-Paquet for their assistance with dataset management. We would like to thank Joshua 
-Newton for his contributions in helping us implement the algorithm to SCT. We express our gratitude to Allan R. Martin for 
-his insightful discussions on the clinical aspects of the work. We would also like to thank Nathan Molinier for providing 
-valuable feedback on the manuscript figures. We acknowledge all participants as well as collaborators of the _spine-generic_ study.
+We thank Nick Guenther and Mathieu Guay-Paquet for their assistance with dataset management, Joshua Newton for his help 
+with implementing the algorithm in SCT, and Allan R. Martin for his insightful discussions on the clinical aspects of the 
+work. We also thank Nathan Molinier for providing valuable feedback on the manuscript figures. We acknowledge all participants
+as well as collaborators of the <i>spine-generic</i> study ([https://spine-generic.readthedocs.io](https://spine-generic.readthedocs.io)).
 
 Funded by the Canada Research Chair in Quantitative Magnetic Resonance Imaging [CRC-2020-00179], the Canadian Institute of 
 Health Research [PJT-190258], the Canada Foundation for Innovation [32454, 34824], the Fonds de Recherche du Québec - Santé 
@@ -83,3 +83,209 @@ Fund (IVADO and TransMedTech), the Courtois NeuroMod project, the Quebec BioImag
 Research, UK; Wings for Life, Austria; Craig H. Neilsen Foundation, USA), Mila - Tech Transfer Funding Program. Supported by 
 the Ministry of Health of the Czech Republic, grant nr. NU22-04-00024. All rights reserved. JV has received funding from the 
 European Union's Horizon Europe research and innovation programme under the Marie Sktodowska-Curie grant agreement No 101107932.
+
+ \awesomebox[red]{2pt}{\faExclamationCircle}{red}{\textbf{NOTE}}
+
+ > **_NOTE:_** The following section in this document repeats the narrative content exactly as                     found in the [corresponding NeuroLibre Reproducible Preprint (NRP)](https://preprint.neurolibre.org/10.55458/neurolibre.00017). The content was                     automatically incorporated into this PDF using the NeuroLibre publication workflow [@Karakuzu2022-nlwf] to                     credit the referenced resources. The submitting author of the preprint has verified and approved the                     inclusion of this section through a GitHub pull request made to the [source repository](https://github.com/valosekj/PAM50-normalized-metrics-paper) from which this document was built.                     Please note that the figures and tables have been excluded from this (static) document. **To interactively explore such outputs and re-generate them, please visit the corresponding [NRP](https://preprint.neurolibre.org/10.55458/neurolibre.00017).**                     For more information on integrated research objects (e.g., NRPs) that bundle narrative and executable content for reproducible and transparent publications,                     please refer to @Dupre2022-iro. NeuroLibre is sponsored by the Canadian Open Neuroscience Platform (CONP) [@Harding2023-conp].
+
+1. INTRODUCTION
+===============
+
+
+1.1 Spinal cord morphometry measures
+------------------------------------
+
+
+The spinal cord plays a vital role in the central nervous system by transmitting sensory and motor signals between the brain and the rest of the body. It also contains essential networks responsible for functions such as locomotion and pain processing. Structural magnetic resonance imaging (MRI) is commonly used to assess spinal cord macrostructure and to compute measures of spinal cord morphometry like cross-sectional area (CSA) or anteroposterior (AP) diameter. The morphometric measures serve as objective indicators to evaluate spinal cord pathologies, such as the extent of spinal cord atrophy in multiple sclerosis [@Losseff1996-py; @Mina2021-xs; @Rocca2019-yc] and amyotrophic lateral sclerosis [@ElMendili2023-ws; @Paquin2018-kf] or the severity of spinal cord injury and spinal cord compression in traumatic and non-traumatic spinal cord injury, respectively [@Badhiwala2020-qh; @David2019-jc; @Miyanji2007-za].
+
+
+However, interpreting morphometric measures is challenging due to considerable inter-subject variability associated with demographic and biological factors. For example, significantly smaller CSA is consistently reported in females relative to males [@Bedard2022-tr; @Engl2013-xx; @Mina2021-xs; @Papinutto2015-ov; @Papinutto2020-hn; @Rashid2006-ar; @Solstrand2020-xz; @Yanase2006-xz]. Similarly, studies showed an association of spinal cord CSA with cervical cord length [@Martin2017-cf; @Martin2017-zu; @Oh2014-du], spinal canal area, and spinal canal diameters [@Kesenheimer2021-vw; @Papinutto2020-hn]. Other factors, such as brain volume, intracranial volume, and thalamic volume also showed a strong correlation with spinal cord CSA [@Bedard2022-tr; @Papinutto2020-hn; @Rashid2006-ar; @Solstrand2020-xz]. 
+
+
+As for weight and height, studies showed only a moderate correlation with spinal cord CSA [@Papinutto2020-hn; @Yanase2006-xz] or did not show any significant association [@Bedard2022-tr; @Papinutto2020-hn; @Solstrand2020-xz]. Likewise, only a weak non-significant association was reported between spinal cord CSA and age [@Bedard2022-tr; @Kato2012-iy; @Papinutto2020-hn; @Yanase2006-xz]. A single study with a wide cohort age range reported that CSA increases until about 45 years of age and then begins to decrease [@Papinutto2020-hn].
+
+
+In addition to inter-subject variability, spinal cord anatomy varies depending on the level. Corresponding with anatomical textbooks [@Standring2020-er], studies have shown an increase in CSA around vertebral levels C4-C5 corresponding to cervical enlargement [@DeLeener2018-zm; @Frostell2016-yw; @Horakova2022-gz; @Martin2017-zu; @Mina2021-xs; @Rocca2019-yc]. Then, the spinal cord cross-section becomes smaller, which is mirrored by the decrease in CSA. 
+
+
+1.2 Normalization strategies
+----------------------------
+
+
+Various normalization strategies have been proposed to account for the above-mentioned factors on spinal cord morphometric measures. Sex was used for CSA normalization in several works [@Bedard2022-tr; @Kesenheimer2021-vw; @Papinutto2020-hn; @Rashid2006-ar]. Other studies proposed spinal cord length as a normalization factor [@ElMendili2023-ws; @Martin2017-cf; @Martin2017-zu; @Rocca2019-yc; @Oh2014-du]. Additionally, combining spinal cord length with a z-score normalization was proposed to account for variations along the superior-inferior axis [@Martin2017-cf; @Martin2017-zu]. Another approach taking into account the dependency of spinal cord anatomy on a level involved the normalization of morphometric measures from the compression site using non-compressed levels above and below [@Guo2022-qb; @Miyanji2007-za]. Finally, several studies normalized CSA using the spinal canal and brain metrics, including spinal canal area, spinal canal diameter, brain volume, intracranial volume, thalamic volume, and head size normalization factor [@Bedard2022-tr; @Horsfield2010-gx; @Kesenheimer2021-vw; @Papinutto2020-hn; @Rashid2006-ar; @Rocca2019-yc]. 
+
+
+While normalization strategies showed promising outcomes, there is currently no accepted consensus on which method to use [@Cohen2021-generic; @Papinutto2020-hn], and their practical implementation may encounter several challenges. First, measuring the spinal cord length and the spinal canal area can be time-consuming due to the absence of reliable automatic measurement techniques. Second, obtaining brain MRI scans, necessary for assessing brain and thalamic volumes, may not be routinely available in spinal cord MRI protocols, and neurodegenerative diseases such as multiple sclerosis can influence brain measurements and potentially introduce bias during normalization.
+
+
+1.3 Spinal cord template
+------------------------
+
+
+Similarly to brain studies, spinal cord studies involving multiple subjects frequently rely on templates — standardized, high-resolution images of the human spinal cord used as a reference for comparing and analyzing individual spinal cord scans. A commonly used spinal cord template is the PAM50 [@DeLeener2018-zm]. The process of aligning individual single-subject images to the template typically involves a series of non-linear image transformations, which may introduce inaccuracies when computing morphometric measures in the PAM50 vs. in the native subject’s space. This is an important consideration, especially in subjects with altered spinal cord anatomy, such as patients with spinal cord injury. 
+
+
+1.4 Normative values
+--------------------
+
+
+Several multi-subject studies have provided normative values for spinal cord morphometry [@DeLeener2018-zm; @Frostell2016-yw; @Horakova2022-gz; @Kato2012-iy; @Taso2016-cv]. However, these studies show inconsistency in their reporting. Some authors only provided values for intervertebral discs [@DeLeener2018-zm; @Horakova2022-gz], while others presented values averaged across multiple vertebral levels [@Taso2016-cv]. Notably, none of these studies have presented normative values separated by sex.
+
+
+1.5 Study Objective
+-------------------
+
+
+In this study, we present a database of healthy normative values for six commonly used measures of spinal cord morphometry built using a new fully-automatic normalization approach. The database is interactive, available [online](https://preprint.neurolibre.org/10.55458/neurolibre.00017) and allows filtering by sex, age, and MRI vendors. The proposed methodology is open-source, easily accessible through the Spinal Cord Toolbox (SCT) [@DeLeener2017-fe], and can be used in future multi-subject studies to minimize inter- and intra-subject variability.
+
+
+2. MATERIALS AND METHODS
+========================
+
+
+2.1 Participants
+----------------
+
+
+We used data from the *spine-generic* multi-subject dataset [@Cohen2021-open]. The dataset is open-access, organized according to the Brain Imaging Data Structure (BIDS) standard [@Gorgolewski2016-xf; @Karakuzu2022-bids] and managed using [git-annex](href="https://git-annex.branchable.com) in [this GitHub repository](https://github.com/spine-generic/data-multi-subject/tree/r20230223).
+
+
+Participants were scanned across 43 centers on 3T MRI scanners from 3 vendors (GE, Philips and Siemens) using the consensus *spine-generic* acquisition protocol [@Cohen2021-generic]. For details on sequence parameters, see @Cohen2021-generic; @Cohen2021-open.
+
+
+Two experienced radiologists (MK, TR) evaluated MRI scans with a focus on the presence of spinal cord compression. Spinal cord compression was defined as a change in spinal cord contour at the level of an intervertebral disc on an axial or sagittal MRI plane compared with that at the midpoint level of neighbouring vertebrae [@Kadanka2017-cu; @Kerkovsky2017-tw]. Minor abnormalities such as mild disc protrusions, spine misalignment or minimal widening of the spinal cord central canal were not considered significant pathologies.
+
+
+Qualitative assessment of the *spine-generic* dataset by two experienced radiologists revealed mostly mild spinal cord compression in 64 out of the total 267 volunteers (see the “pathology” column in [this spreadsheet](https://github.com/spine-generic/data-multi-subject/blob/r20230223/participants.tsv)). Those volunteers were excluded from the further analysis. The final cohort used for the normative database construction consisted of 203 healthy subjects (105 males and 98 females). Detailed demographic characteristics are provided in Table 1.
+
+
+2.2 Data pre-processing
+-----------------------
+
+
+We used the T2-weighted images (0.8 mm isotropic resolution) covering at least C1 to T1 vertebral levels. The image processing was performed automatically using SCT v6.0 [@DeLeener2017-fe]. For each participant, the spinal cord was segmented using a deep learning-based algorithm [@Gros2019-yi] and the intervertebral discs were labeled [@Ullmann2014-zm] to generate the cord segmentation labeled with vertebral levels (Figure 1A).
+
+
+The spinal cord segmentation and disc labels were visually inspected using SCT’s quality control report (`sct_qc` function) and manually corrected when necessary. The manual corrections ensured that the spinal cord segmentation masks used for the computation of morphometric measures were reliable. Segmentation masks were corrected using FSLeyes image viewer [@McCarthy2019-qd] by adding or removing voxels when appropriate. Regarding vertebral labeling corrections, we manually identified the posterior tip of the intervertebral discs using SCT’s `sct_label_utils` function when it was necessary.
+
+
+2.3 Normalization
+-----------------
+
+
+Figure 1 shows a schematic representation of the fully-automatic normalization approach based on linear interpolation of morphometric measures from the subject’s native space to the anatomical dimensions of the PAM50 spinal cord template [@DeLeener2018-zm].
+
+
+After the preprocessing (i.e., spinal cord segmentation and labeling), the morphometric measures were computed across individual axial slices from the spinal cord segmentation mask in the subject’s native space. Then, the number of axial slices corresponding to each vertebral level was identified in both the subject’s native space and in the PAM50 template based on the labeled segmentation. Finally, the computed morphometric measures were linearly interpolated to the PAM50 anatomical dimensions based on the number of slices for each vertebral level in the native space and the PAM50 template.
+The following morphometric measures were computed using SCT’s `sct_process_segmentation` for each participant: cross-sectional area (CSA), anteroposterior (AP) diameter, transverse diameter, compression ratio, eccentricity, and solidity. 
+
+
+Spinal cord CSA reflects the atrophy of the spinal cord and is computed as the area of the spinal cord in the transverse plane. The AP diameter is the measurement of the diameter of the spinal cord in the anterior-posterior direction, while the transverse diameter is the measurement of the diameter of the spinal cord from side to side. The compression ratio reflects the flattening of the spinal cord and is defined as the ratio of the AP diameter and the transverse diameter. Eccentricity is defined as the ratio of the focal distance over the major axis length of an ellipse with the same second moments as the spinal cord. The value is in the interval `[0, 1]`. When it is 0, the ellipse becomes a circle. Solidity is used to measure the indentation of the spinal cord and is defined as the ratio of the area representing the spinal cord to the area of the smallest convex polygon surrounding all positive pixels in the image. Solidity is relevant in detecting non-convex shapes, for instance, in subjects with spinal cord compression.
+
+
+2.4 Normative values and interactive database
+---------------------------------------------
+
+
+Morphometric measures normalized to the PAM50 space were used for the calculation of normative values of the spinal cord morphometry. The normative values were calculated as mean and standard deviation across participants for slices in PAM50 space corresponding to each intervertebral disc and the middle of each vertebral level. The normative values are provided for the whole cohort and separated by sex.
+For convenient introspection of the morphometric measures, interactive figures were created using the [Plotly](https://plotly.com) Python library `v5.9.0`. The figures allow interactive visualization of normative values for any slice in the PAM50 space and filtering for sex, age decades, and MRI vendors. The figures show values per slice (instead of per vertebral level), to prevent the loss of information that would arise if values were averaged within each vertebral level. 
+
+
+2.5 Statistical analysis
+------------------------
+
+
+Statistical analysis was conducted using the SciPy Python library `v1.10.1` [@Virtanen2020-hl]. Descriptive statistics, including mean and standard deviation, were computed for age, height, and weight. The Shapiro-Wilk normality test was used to assess data normality. Differences between males and females in age, height, and weight were examined using the Wilcoxon rank-sum test. Morphometric measures in PAM50 space were averaged across participants for each slice and compared between sex and MRI vendors using the Wilcoxon rank-sum test. The significance level was set to `alpha = 0.001`.
+
+
+The inter-subject coefficient of variation (COV), defined as the ratio of standard deviation and mean, was computed per slice for all morphometrics measures. The COV was then averaged for individual vertebral levels. Additionally, the mean COV for the whole cervical spinal cord was computed as average across all slices.
+
+
+4. DISCUSSION
+=============
+
+
+This study introduced a framework to automatically normalize spinal cord morphometric measures and computed normative metrics from a public database of healthy adults. Normative values were reported in the PAM50 template reference space, which facilitates the comparison of results across past and future studies. Metrics were presented as interactive figures, allowing readers to conveniently explore morphometric values and filter them according to sex, MRI vendor, and age.
+
+
+4.1 Participants
+----------------
+
+
+Assessment of the *spine-generic* MRI scans by two experienced radiologists revealed mild spinal cord compression in 24% of volunteers. This finding aligns with previous studies that have reported the prevalence of asymptomatic spinal cord compression in up to 40% of the otherwise healthy population [@Kovalova2016-ra; @Smith2021-mh]. Given our objective of constructing a database containing healthy normative morphometric values to minimize variability in future research, we excluded the subjects with mild compression to mitigate potential bias.
+
+
+4.2 Normalization to PAM50 anatomical dimensions
+------------------------------------------------
+
+
+The proposed normalization approach is performed per slice (instead of per vertebral level), providing a more exhaustive picture of cord morphometry along the superior-inferior axis. Moreover, precise quantification of cord morphometry along the superior-inferior axis could be relevant. For example, in the case of compression spanning only a few mm of cord tissue, it would be desirable to know the cord morphometry on the healthy population at the equivalent spinal cord location (ie: not the entire vertebrae, but a smaller section).
+
+
+Compared to classical image-based registration, our normalization approach does not introduce geometrical image distortions, which may result in inaccuracies when computing morphometric measures. Traditional registration to the PAM50 template involves spinal cord straightening, vertebral alignment between the image and the template, and iterative slice-wise non-linear registration [@DeLeener2017-fe]. Each of these steps might change the spinal cord shape and contour (see a relevant [issue on GitHub](https://github.com/sct-pipeline/dcm-metric-normalization/issues/3)).
+
+
+4.3 Interactive figures and Normative database
+----------------------------------------------
+
+
+Unlike previous studies [@DeLeener2018-zm; @Horakova2022-gz; @Kato2012-iy; @Taso2016-cv] that presented normative values using "static" tables, our paper features interactive figures for a more exhaustive and convenient exploration of morphometric results. 
+
+
+Furthermore, previous studies, such as those conducted by [@DeLeener2018-zm; @Taso2016-cv; @Kato2012-iy], only provided normative values for CSA and AP diameter. Only one recent study [@Horakova2022-gz] also featured transverse diameter, compression ratio, solidity, and torsion. Results presented in this study feature morphometric values for all six metrics simultaneously, offering a convenient way to explore the relationship between individual morphometric measures. This could be particularly useful for assessing changes in spinal anatomy between levels or for identifying levels of spinal cord compression. Additionally, researchers have the option to show or hide traces by clicking on their corresponding legend items, allowing for easy exploration of trends related to sex, age decades, and MRI vendors.
+
+
+The proposed open-source database of normative values in the PAM50 space allows researchers to filter subjects based on demographic and biological factors. Researchers can thus match sex, age, and MRI vendor with their study population and use our database for normalization of their cohort relative to the healthy population with respect to these factors. This is a relevant feature since normalization per sex is the most commonly used normalization factor for spinal cord morphometric measures [@Bedard2022-tr; @Kesenheimer2021-vw; @Mina2021-xs; @Papinutto2020-hn; @Rashid2006-ar; @Rocca2019-yc]. 
+
+
+4.4 Morphometric measures
+-------------------------
+
+
+The CSA values obtained in this study for individual intervertebral discs are in line with CSA measured in 50 healthy subjects [@DeLeener2018-zm]. For instance, we measured a CSA of 76.61 ± 8.35 mm2 (mean ± standard deviation) for the C3-C4 intervertebral disc, while @DeLeener2018-zm obtained 77.46 ± 8.45 mm2 for the same intervertebral disc. In contrast, other studies reported either smaller or larger CSA for the same C3-C4 intervertebral disc. For example, @Horakova2022-gz obtained a CSA of 71.7 ± 8.2 mm2, while @Kesenheimer2021-vw measured a CSA of 87.4 ± 8.31 mm2. This can be attributed to various factors, including differences in MRI contrast, variations in population ages, and variations in the segmentation methods used.
+
+
+Another study based on the UK Biobank database (N = 804) measured a CSA of 66.4 ± 6.61 mm2 at C2-C3 vertebral levels [@Bedard2022-tr]. Here, we measured larger CSAs: 73.59 ± 7.41 mm2 at C2 and 74.32 ± 7.91 mm2 at C3 vertebral levels. This discrepancy is likely caused by our study relying on T2-w images, whilst Bédard and Cohen-Adad used T1-w images [@Bedard2022-tr]. It has been shown that T2-w scans generally yield larger CSA compared to T1-w scans [@Cohen2021-open].
+
+
+As for AP diameter and transverse diameter, values measured in this study correspond with population estimates from @Frostell2016-yw. For instance, we measured an AP diameter of 7.86 ± 0.56 mm and a transverse diameter of 11.9 ± 0.76 mm for the C2 vertebral level, while @Frostell2016-yw reported an AP diameter of 7.9 ± 1.6 mm and a transverse diameter of 12.3 ± 2.4 mm for the same vertebral level.
+
+
+Confirming previous studies [@Bedard2022-tr; @Engl2013-xx; @Papinutto2020-hn; @Rashid2006-ar; @Solstrand2020-xz; @Yanase2006-xz], we showed that females have smaller CSA relative to males across all vertebral levels. Smaller spinal cord size is also mirrored by lower AP and transverse diameters in females compared to males.
+
+
+The increase in CSA around vertebral levels C4-C5 indicates the location of cervical enlargement, the source of the large spinal nerves that supply the upper limbs. This finding is consistent with anatomical textbooks [@Standring2020-er] and previous studies [@DeLeener2018-zm; @Frostell2016-yw; @Horakova2022-gz; @Martin2017-zu; @Mina2021-xs; @Rocca2019-yc]. After the cervical enlargement (i.e., below level C5), the spinal cord becomes smaller, which is mirrored by the decrease in CSA, AP diameter, and transverse diameter. The decrease in AP diameter along the superior-inferior direction, along with the changing trends in compression ratio and eccentricity, corresponds to the fact that the spinal cord is not cylindrical but rather changes its shape across levels from circular shape at C1 and C2 levels to a more elliptical shape around levels C5 and C6 [@Standring2020-er].
+
+
+Because various morphometric measures exhibited differing levels of inter-subject variability (indicated by COV), we hypothesize that normalizing measures with greater inter-subject variability, such as CSA, would yield a more pronounced impact compared to normalizing measures with lower inter-subject variability, such as solidity. We measured a COV of 10.1% and 10.8% for the CSA at the C2 and C3 vertebral levels, respectively. These values are similar to the 9.96% COV reported by Bédard and Cohen-Adad for T1-w images at the C2-C3 level [@Bedard2022-tr].
+
+
+The variability of morphometric measures between MRI vendors might be explained by differences in sequence parameters and/or reconstruction filters between vendors [@Cohen2021-open].
+
+
+4.5 Limitations and Future Work
+-------------------------------
+
+
+The T2-w images from the open-access *spine-generic* dataset cover only the cervical spinal cord and have a relatively narrow age range (with 93.6% of subjects aged 21 to 40 years). Despite this limitation, it remains the largest open-source database of multi-contrast spinal cord MRI data. We welcome future contributions of additional subjects across different age groups and with data that encompasses the entire spinal cord. 
+
+
+We are aware that the morphometric measures were derived solely from T2-w MRI contrast and using the segmentation method trained specifically for this contrast [@Gros2019-yi]. This has to be considered when comparing with other MRI contrasts, such as T1-w, which showed a smaller CSA compared to T2-w [@Cohen2021-open]. This might be mitigated in the future using a contrast-agnostic segmentation algorithm [@Bedard2023-kb].
+
+
+Future efforts will focus on validating the proposed methods in pathologies such as traumatic and non-traumatic spinal cord injury and multiple sclerosis. This validation process will provide valuable insights into the applicability and accuracy of the methods in the context of various spinal cord conditions.
+
+
+4.6 Conclusions
+---------------
+
+
+We introduced a new approach for the normalization of spinal cord morphometric measures using the PAM50 spinal cord template. We built an interactive database of spinal cord morphometric values across 203 healthy adults. The database can be used to normalize spinal cord morphometric features, stratified according to factors such as sex, age, and MRI vendors. This database can also be used to further inspect demographic, biological and image acquisition factors associated with inter-subject variability. 
+
+
+The proposed methodology and results are open-source and fully reproducible. The database and normalization method is applicable to new datasets via the Spinal Cord Toolbox (SCT) `v6.0` and higher.
+
+
+
+## References
+

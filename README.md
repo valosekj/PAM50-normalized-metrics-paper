@@ -1,6 +1,6 @@
 # A database of the healthy human spinal cord morphometry in the PAM50 template space
 
-[Link to interactive preprint](https://preprint.neurolibre.org/10.55458/neurolibre.00017)
+[![DOI](https://neurolibre.org/papers/10.55458/neurolibre.00017/status.svg)](https://doi.org/10.55458/neurolibre.00017)
 
 Spinal cord morphometry measures derived from magnetic resonance imaging (MRI) scans serve as valuable prognostic biomarkers 
 for various spinal cord pathologies. Despite their significance, interpreting these biomarkers is challenging due to substantial 
